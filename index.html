@@ -1,14 +1,15 @@
 <html>
-<button onclick="Intro()"><h1>START SHOW</h1></button><audio id="intro" controls><source src="intro.mp3"></source></audio><br />
-<button onclick="Intro2()"><h1>New Guest</h1></button><audio id="intro2" controls><source src="intro 2.mp3"></source></audio><br />
-<button onclick="Cheer4()"><h1>Cheer 4</h1></button><audio id="cheer4" controls><source src="Cheer 4.mp3"></source></audio><br />
-<button onclick="Cheer5()"><h1>Cheer 5</h1></button><audio id="cheer5" controls><source src="Cheer 5.mp3"></source></audio><br />
-<button onclick="Clap1()"><h1>Clap 1</h1></button><audio id="clap1" controls><source src="Clap 1.mp3"></source></audio><br />
-<button onclick="Clap4()"><h1>Clap 4</h1></button><audio id="clap4" controls><source src="Clap 4.mp3"></source></audio><br />
-<button onclick="Laugh1()"><h1>Laugh 1</h1></button><audio id="laugh1" controls><source src="Laugh 1.mp3"></source></audio><br />
-<button onclick="Laugh2()"><h1>Laugh 2</h1></button><audio id="laugh2" controls><source src="Laugh 2.mp3"></source></audio><br />
-<button onclick="Laugh3()"><h1>Laugh 3</h1></button><audio id="laugh3" controls><source src="Laugh 3.mp3"></source></audio><br />
-<button onclick="Outro()"><h1>END SHOW</h1></button><audio id="outro" controls><source src="outro.mp3"></source></audio><br />
+<button onclick="ReStart()"><h3>RESET</h3></button><div id="box"></div>
+<button onclick="Intro()"><h3>START SHOW</h3></button><audio id="intro" controls><source src="intro.mp3"></source></audio><br />
+<button onclick="Intro2()"><h3>New Guest</h3></button><audio id="intro2" controls><source src="intro 2.mp3"></source></audio><br />
+<button onclick="Cheer4()"><h3>Cheer 4</h3></button><audio id="cheer4" controls><source src="Cheer 4.mp3"></source></audio><br />
+<button onclick="Cheer5()"><h3>Cheer 5</h3></button><audio id="cheer5" controls><source src="Cheer 5.mp3"></source></audio><br />
+<button onclick="Clap1()"><h3>Clap 1</h3></button><audio id="clap1" controls><source src="Clap 1.mp3"></source></audio><br />
+<button onclick="Clap4()"><h3>Clap 4</h3></button><audio id="clap4" controls><source src="Clap 4.mp3"></source></audio><br />
+<button onclick="Laugh1()"><h3>Laugh 1</h3></button><audio id="laugh1" controls><source src="Laugh 1.mp3"></source></audio><br />
+<button onclick="Laugh2()"><h3>Laugh 2</h3></button><audio id="laugh2" controls><source src="Laugh 2.mp3"></source></audio><br />
+<button onclick="Laugh3()"><h3>Laugh 3</h3></button><audio id="laugh3" controls><source src="Laugh 3.mp3"></source></audio><br />
+<button onclick="Outro()"><h3>END SHOW</h3></button><audio id="outro" controls><source src="outro.mp3"></source></audio><br />
 </html>
 <script type="text/javascript">
 cheer5 = document.getElementById("cheer5")
@@ -21,6 +22,20 @@ laugh3 = document.getElementById("laugh3")
 intro = document.getElementById("intro")
 intro2 = document.getElementById("intro2")
 outro = document.getElementById("outro")
+timeleft = document.getElementById("box")
+left = 1800
+function Tick() {
+	left = left - 1
+	timeleft.innerHTML = left + " seconds left in the show."
+	if(left == 40) {
+		Outro()
+	}
+}
+function ReStart() {
+	left = 1800
+	timeleft.innerHTML = left + " seconds left in the show."
+}
+setInterval(Tick, 1000)
 function Cheer5() {
 	cheer5.play()
 	}
@@ -44,6 +59,8 @@ function Laugh3() {
 	}
 function Intro() {
 	intro.play()
+	left = 1800
+	timeleft.innerHTML = left + " seconds left in the show."
 	}
 function Intro2() {
 	intro2.play()
